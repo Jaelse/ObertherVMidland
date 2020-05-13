@@ -1,0 +1,210 @@
+15 U.S. Code § 1692g. Validation of debts
+
+(b) Disputed debts
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+2. [the debt], 
+3. [or any portion thereof,] 
+4. [is disputed,] 
+5. [or that the consumer requests the name and address of the original creditor,] 
+6. [the debt collector shall cease] 
+7. [collection of the debt,] 
+8. [or any disputed portion thereof,] 
+9. [until the debt collector obtains]
+10.[verification of the debt]
+11.[or a copy of a judgment,] 
+12.[or the name and address of the original creditor,]
+13.[and]
+14.[a copy of such verification]
+15.[or judgment,] 
+16.[or name and address of the original creditor,]
+17.[is mailed to the consumer by the debt collector.]
+
+
+1-(2*-4)-4-6-(7)-9-(10)-13-(14)-17.
+  |          |     |       |
+  (3*-4)     (8)   (11)    (15) 
+  |                |       |
+  (5~9-12-13-16~)  (12)    (16)
+
+a~b = consider all the rules in ascending order from a to b
+
+1-(2-4)-6-(7)-9-(10)-13-(14)-17.
+
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+2. [the debt], 
+4. [is disputed,] 
+6. [the debt collector shall cease] 
+7. [collection of the debt,] 
+9. [until the debt collector obtains]
+10.[verification of the debt]
+13.[and]
+14.[a copy of such verification]
+17.[is mailed to the consumer by the debt collector.]
+
+1-(3-4)-6-(7)-9-(10)-13-(14)-17.
+
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+3. [or any portion thereof,] 
+4. [is disputed,] 
+6. [the debt collector shall cease] 
+7. [collection of the debt,] 
+9. [until the debt collector obtains]
+10.[verification of the debt]
+13.[and]
+14.[a copy of such verification]
+17.[is mailed to the consumer by the debt collector.]
+
+1-(5)-6-(7)-9-(10)-13-(14)-17.
+
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+5. [or that the consumer requests the name and address of the original creditor,] 
+6. [the debt collector shall cease] 
+7. [collection of the debt,] 
+9. [until the debt collector obtains]
+10.[verification of the debt]
+13.[and]
+14.[a copy of such verification]
+17.[is mailed to the consumer by the debt collector.]
+
+
+1-(2-4)-6-(8)-9-(10)-13-(14)-17.
+
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+2. [the debt], 
+4. [is disputed,] 
+6. [the debt collector shall cease] 
+8. [or any disputed portion thereof,] 
+9. [until the debt collector obtains]
+10.[verification of the debt]
+13.[and]
+14.[a copy of such verification]
+17.[is mailed to the consumer by the debt collector.]
+
+
+1-(3-4)-6-(8)-9-(10)-13-(14)-17.
+
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+3. [or any portion thereof,] 
+4. [is disputed,] 
+6. [the debt collector shall cease] 
+8. [or any disputed portion thereof,]
+9. [until the debt collector obtains]
+10.[verification of the debt]
+13.[and]
+14.[a copy of such verification]
+17.[is mailed to the consumer by the debt collector.]
+
+1-(5)-6-(8)-9-(10)-13-(14)-17.
+
+1. [If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that] 
+5. [or that the consumer requests the name and address of the original creditor,] 
+6. [the debt collector shall cease] 
+8. [or any disputed portion thereof,] 
+9. [until the debt collector obtains]
+10.[verification of the debt]
+13.[and]
+14.[a copy of such verification]
+17.[is mailed to the consumer by the debt collector.]
+
+1-(2-4)-6-(7)-9-(11)-13-(14)-17.
+1-(3-4)-6-(7)-9-(11)-13-(14)-17.
+1-(5)-6-(7)-9-(11)-13-(14)-17.
+1-(2-4)-6-(8)-9-(11)-13-(14)-17.
+1-(3-4)-6-(8)-9-(11)-13-(14)-17.
+1-(5)-6-(8)-9-(11)-13-(14)-17.
+1-(2-4)-6-(7)-9-(12)-13-(14)-17.
+1-(3-4)-6-(7)-9-(12)-13-(14)-17.
+1-(5)-6-(7)-9-(12)-13-(14)-17.
+1-(2-4)-6-(8)-9-(12)-13-(14)-17.
+1-(3-4)-6-(8)-9-(12)-13-(14)-17.
+1-(5)-6-(8)-9-(12)-13-(14)-17.
+
+1-(2-4)-6-(7)-9-(10)-13-(15)-17.
+1-(3-4)-6-(7)-9-(10)-13-(15)-17.
+1-(5)-6-(7)-9-(10)-13-(15)-17.
+1-(2-4)-6-(8)-9-(10)-13-(15)-17.
+1-(3-4)-6-(8)-9-(10)-13-(15)-17.
+1-(5)-6-(8)-9-(10)-13-(15)-17.
+1-(2-4)-6-(7)-9-(11)-13-(15)-17.
+1-(3-4)-6-(7)-9-(11)-13-(15)-17.
+1-(5)-6-(7)-9-(11)-13-(15)-17.
+1-(2-4)-6-(8)-9-(11)-13-(15)-17.
+1-(3-4)-6-(8)-9-(11)-13-(15)-17.
+1-(5)-6-(8)-9-(11)-13-(15)-17.
+1-(2-4)-6-(7)-9-(12)-13-(15)-17.
+1-(3-4)-6-(7)-9-(12)-13-(15)-17.
+1-(5)-6-(7)-9-(12)-13-(15)-17.
+1-(2-4)-6-(8)-9-(12)-13-(15)-17.
+1-(3-4)-6-(8)-9-(12)-13-(15)-17.
+1-(5)-6-(8)-9-(12)-13-(15)-17.
+
+1-(2-4)-6-(7)-9-(10)-13-(16)-17.
+1-(3-4)-6-(7)-9-(10)-13-(16)-17.
+1-(5)-6-(7)-9-(10)-13-(16)-17.
+1-(2-4)-6-(8)-9-(10)-13-(16)-17.
+1-(3-4)-6-(8)-9-(10)-13-(16)-17.
+1-(5)-6-(8)-9-(10)-13-(16)-17.
+1-(2-4)-6-(7)-9-(11)-13-(16)-17.
+1-(3-4)-6-(7)-9-(11)-13-(16)-17.
+1-(5)-6-(7)-9-(11)-13-(16)-17.
+1-(2-4)-6-(8)-9-(11)-13-(16)-17.
+1-(3-4)-6-(8)-9-(11)-13-(16)-17.
+1-(5)-6-(8)-9-(11)-13-(16)-17.
+1-(2-4)-6-(7)-9-(12)-13-(16)-17.
+1-(3-4)-6-(7)-9-(12)-13-(16)-17.
+1-(5)-6-(7)-9-(12)-13-(16)-17.
+1-(2-4)-6-(8)-9-(12)-13-(16)-17.
+1-(3-4)-6-(8)-9-(12)-13-(16)-17.
+1-(5)-6-(8)-9-(12)-13-(16)-17.
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. [Collection activities]
+2. [and communications]
+3. [that do not otherwise violate this subchapter may continue during the 30-day period referred to in subsection (a) unless the consumer has notified the debt collector in writing that]
+4. [the debt,] 
+5. [or any portion of the debt,]
+6. [is disputed]
+7. [or that the consumer requests the name and address of the original creditor.] 
+
+1-2-3-(4-6)
+      |
+      (5-6)
+      |
+      (7)
+
+1-2-3-(4-6)
+
+1. [Collection activities]
+2. [and communications]
+3. [that do not otherwise violate this subchapter may continue during the 30-day period referred to in subsection (a) unless the consumer has notified the debt collector in writing that]
+4. [the debt,] 
+6. [is disputed]
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. [Any collection activities]
+2. [and communication]
+3. [during the 30-day period may not] 
+4. [overshadow] 
+5. [or be inconsistent with]
+6. [the disclosure of the consumer’s right to dispute the debt]
+7. [or request the name and address of the original creditor.]
+
+
+1-2-3-(4)-(6)
+      |   |
+      (5) (7)
+
+
+1-2-3-6
+
+1. [Any collection activities]
+2. [and communication]
+3. [during the 30-day period may not] 
+4. [overshadow] 
+6. [the disclosure of the consumer’s right to dispute the debt]
+
+If
+during the 30-day period
+THEN
+Any collection activities and communication may not overhshadow the disclosure of the consumer’s right to dispute the debt.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
