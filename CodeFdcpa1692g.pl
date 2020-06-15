@@ -124,14 +124,14 @@ obtain_and_mail(
 % THEN
 % Debt collector shall cease collection of debt from the consumer.
 
-cease_collection_of_debt(DEBT_COLLECTOR, CONSUMER) :- 
+shall(debt_collector(DC), cease_collection(debt(D), consumer(C)), according('FDCPA 1692(b)')) :- 
     notifies(
-        CONSUMER, 
-        DEBT_COLLECTOR, 
-        dispute(CONSUMER, the_debt), 
-        still_in_effect(thirty_day_time_period)
+        consumer(C), 
+        debt_collector(DC), 
+        dispute(consumer(C),debt(C)), 
+        date(D)
         ),
-    not(obtain_and_mail_verification_of_debt(DEBT_COLLECTOR, CONSUMER)).
+    not(obtain_and_mail_verification(debt_collector(DC), consumer(C), debt(D))).
 
 % SIMPLIFIED RULE 2
 % If the consumer notifies the debt collector in writing within the thirty-day period described in subsection (a) that any portion thereof,

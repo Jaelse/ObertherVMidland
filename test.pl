@@ -108,7 +108,7 @@ right(
     claim(X, Y, dispute_debt(Y)),
     duty(Y, X, dispute_debt(Y)).
 
-duty(Y,X, dispute_debt(Y)) :- 
+% duty(Y,X, dispute_debt(Y)) :- 
 % claim that X can 
 % I have a claim on debt collector 
 % to get a verification of the debt
@@ -116,4 +116,3 @@ duty(Y,X, dispute_debt(Y)) :-
 % then debt collector has a duty
 % to get me a verification of the debt 
 % when I dispute the debt
-
