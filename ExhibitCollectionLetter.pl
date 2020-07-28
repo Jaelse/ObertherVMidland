@@ -1,4 +1,4 @@
-% TODO
+% TODO:
 % replace event('collection activity') by event('proceed to pay') when you
 % figure how to check if an event is a collection activity.
 
@@ -20,83 +20,63 @@
 % What do you need to do to stop this process from continuing?
 % 1) Mail in $500.00 and call to setup your remaining payments.
 % 2) Call us to see how to qualify for discounts and payment plans.
-statement(
-    'collection letter', 
-    [
-        notice('collection letter', 'new ownership'),
-        notice('collection letter', 'pre-legal review'),
-        to('collection letter', 'Oberther'),
-        sold(
-            credit_account("Capital One", "Oberther"),
-            debt_collector("Midland"), 
-            date('10-21-2013')
-        ),
-        collect(
-            debt_collector("Midland"),
-            credit_account("Oberther")
-        ),
-        service(
-            debt_collector("Midland"), 
-            credit_account("Oberther")
-        ),
-        considering(
-            debt_collector("Midland"), 
-            forwarding(
-                debt_collector("Midland"), 
-                credit_account("Oberther"), 
-                attorney(_)
-            )
-        ),
-        not_forward(
-            debt_collector("Midland"), 
-            credit_account("Oberther"), 
-            attorney(_), 
-            before(
-                expiry(thirty_day_time_period)
-            )
-        ),
-        stops(
-            payment(consumer("Oberther"), debt_collector("Midland")), 
-            process(
-                considering(
-                    debt_collector("Midland"), 
-                    forwarding(
-                        debt_collector("Midland"), 
-                        credit_account("Oberther"), 
-                        attorney(_)
-                    )
-                )
-            )
-        ),
-        stops(
-            calls, 
-            process(
-                considering(
-                    debt_collector("Midland"),
-                    forwarding(
-                        debt_collector("Midland"), 
-                        credit_account("Oberther"), 
-                        attorney(_)
-                    )
-                )
-            )
-        ),
-        statement(
-            'written notice', 
-            [
-                obtain_and_mail(
-                    debt_collector("Midland"), 
-                    consumer("Oberther"), 
-                    verification(dispute(consumer("Oberther"), debt_collector("Midland"), the_debt)) 
-                ),
-                right(
-                    consumer("Oberther"),
-                    dispute(consumer("Oberther"), the_debt, debt_collector("DC"))
-                )
-            ]
-        )
-    ]
+
+notice('collection letter', 'new ownership').
+notice('collection letter', 'pre-legal review').
+
+sold(
+    credit_account("Capital One", "Oberther"),
+    debt_collector("Midland"), 
+    date(2013, 10, 21)
 ).
+
+will_be_collecting(
+    debt_collector("Midland"),
+    credit_account("Oberther")
+).
+
+
+service(
+    debt_collector("Midland"), 
+    credit_account("Oberther")
+).
+
+considering(
+    debt_collector("Midland"), 
+    forwarding(
+        debt_collector("Midland"), 
+        credit_account("Oberther"), 
+        attorney
+    ),
+    possible_litigation
+).
+
+not_forward(
+    debt_collector("Midland"), 
+    credit_account("Oberther"), 
+    attorney,
+    D
+) :-
+    within(D, thirty_day_time_period).
+
+
+stop_process(
+    debt_collector("Midland"), 
+    forwarding(
+        debt_collector("Midland"), 
+        credit_account("Oberther"), 
+        attorney
+    ),
+    D
+) :-
+    not_forward(
+        debt_collector("Midland"), 
+        credit_account("Oberther"), 
+        attorney,
+        D
+    ), 
+    pay(consumer("Oberther"), debt_collector("Midland"), amount(500), D),
+    call(consumer("Oberther"), debt_collector("Midland"), D). 
 
 % LET US HELP YOU! If the account goes to an attorney, 
 % our flexible options may no longer be available to you. 
@@ -125,27 +105,100 @@ statement(
 % that you dispute the validity of the debt or any portion thereof, 
 % MCM will assume this debt to be valid.
 
-% notify("Oberther", "Midland", dispute("Oberther", part_of_the_debt("a")))).
-% not_assume_debt_valid :-
-%     notifies("Oberther", "Midland", dispute("Oberther", validity_of_debt)),
-%     thirty_day_time_period.
-
-% not_assume_debt_valid :-
-%     notifies("Oberther",
-%            "Midland",
-%            dispute("Oberther", part_of_the_debt(_))),
-%     thirty_day_time_period.
+valid(debt(consumer("Oberther"))) :- 
+    not(dispute(consumer("Oberther"), debt(consumer("Oberther")), D1)), 
+    before(D1, thirty_day_time_period).
 
 % If you notify MCM, in writing, 
 % within thirty (30) days after receiving this notice that the debt, 
 % or any portion thereof, is disputed, 
 % MCM will obtain verification of the debt or a copy of a judgment (if there is a judgment) 
 % and MCM will mail you a copy of such verification or Judgment.
-% obtain("Midland", verification_of_the_debt) :-
-%     notifies("Oberther",
-%            "Midland",
-%            dispute("Oberther", part_of_the_debt(_))),
-%     thirty_day_time_period.
+
+obtain_and_mail_verification_of_debt(debt_collector("Midland"), consumer("Oberther")) :- 
+    notifies(
+        consumer("Oberther"), 
+        debt_collector("Midland"), 
+        dispute(C, debt(consumer("Oberther"))),
+        D
+    ),
+    before(D, thirty_day_time_period).
+
+
+rule("collection letter", 1, notice('collection letter', 'new ownership'), fact).
+rule("collection letter", 2, notice('collection letter', 'pre-legal review'), fact).
+rule("collection letter", 3, sold(
+    credit_account("Capital One", "Oberther"),
+    debt_collector("Midland"), 
+    date(2013, 10, 21)
+), fact).
+
+rule("collection letter", 4, service(
+    debt_collector("Midland"), 
+    credit_account("Oberther")
+), fact).
+
+rule("collection letter", 5, will_be_collecting(
+    debt_collector("Midland"),
+    credit_account("Oberther")
+), fact).
+
+
+rule("collection letter", 6, considering(
+    debt_collector("Midland"), 
+    forwarding(
+        debt_collector("Midland"), 
+        credit_account("Oberther"), 
+        attorney
+    ),
+    possible_litigation
+), fact).
+
+rule("collection letter", 7, not_forward(
+    debt_collector("Midland"), 
+    credit_account("Oberther"), 
+    attorney,
+    D
+), (within(D, thirty_day_time_period)).
+
+
+rule("collection letter", 8, stop_process(
+    debt_collector("Midland"), 
+    forwarding(
+        debt_collector("Midland"), 
+        credit_account("Oberther"), 
+        attorney
+    ),
+    D
+),
+    (not_forward(
+        debt_collector("Midland"), 
+        credit_account("Oberther"), 
+        attorney,
+        D
+    ), 
+    pay(consumer("Oberther"), debt_collector("Midland"), amount(500), D),
+    call(consumer("Oberther"), debt_collector("Midland"), D))).
+
+rule("collection letter", 9, 
+    valid(debt(consumer("Oberther"))), 
+    (
+        not(dispute(consumer("Oberther"), debt(consumer("Oberther")), D1)), 
+        before(D1, thirty_day_time_period)
+    ).
+
+rule("collection letter", 10, 
+    obtain_and_mail_verification_of_debt(debt_collector("Midland"), consumer("Oberther")),
+    (
+        notifies(
+            consumer("Oberther"), 
+            debt_collector("Midland"), 
+            dispute(C, debt(consumer("Oberther"))),
+            D
+        ),
+        before(D, thirty_day_time_period)
+    )
+).
 
 
 % obtain("Midland", judgment_of_the_debt) :-

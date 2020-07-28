@@ -13,12 +13,12 @@
 % the inquiry reduces to whether a particular collection letter would confuse the unsophisticated consumer. See Bartlett, 128 F.3d at 500–01. 
 
 overshadow(
-    communication(debt_collector(DC), consumer(C), collection_letter(INFORMATION)), 
-    disclosure(INFORMATION, right(R), debt_collector(DC), consumer(C))
+    INFORMATION,
+    DISCLOSURE
     ) :-
     confuse_hypothetical_unsophisticated_consumer(
-        collection_letter(INFORMATION),
-        disclosure(INFORMATION, right(R), debt_collector(DC), consumer(C))
+        INFORMATION,
+        DISCLOSURE
     ).
 
 
@@ -31,12 +31,12 @@ overshadow(
 % the unsophisticated consumer would be left unsure of her right to dispute the debt and request information concerning the original creditor. 
 
 confuse_hypothetical_unsophisticated_consumer(
-    collection_letter(INFORMATION),
-    disclosure(INFORMATION, right(R), debt_collector(DC), consumer(C))
+    INFORMATION,
+    DISCLOSURE
     ) :- 
     makes_hypothetical_unsophisticated_consumer_unsure(
-        collection_letter(INFORMATION),
-        right(R)
+        INFORMATION,
+        DISCLOSURE
     ).
 
 % See Russell v. Equifax A.R.S., 74 F.3d 30, 35 (2d Cir.1996). 
@@ -44,13 +44,14 @@ confuse_hypothetical_unsophisticated_consumer(
 % See Graziano v. Harrison, 950 F.2d 107, 111 (3d Cir.1991) (explaining that “statutory notice must not only explicate a debtor's rights; it must do so effectively”).    
 
 makes_hypothetical_unsophisticated_consumer_unsure(
-    collection_letter(INFORMATION),
-    right(R)
+    INFORMATION,
+    DISCLOSURE
 ) :- 
     makes_hypothetical_unsophisticated_consumer_unsure( 
-        collection_letter(INFORMATION), 
-        practical_effect(
-            right(R)
+        INFORMATION, 
+        practical_effect_according_to_FDCPA(
+            DISCLOSURE,
+            PE
         )
     ).
 
@@ -72,53 +73,16 @@ makes_hypothetical_unsophisticated_consumer_unsure(
 % THEN
 % consumer finds the benefit of right to dispute less
 
-
-
-
 makes_hypothetical_unsophisticated_consumer_unsure( 
-    collection_letter(INFORMATION), 
-    practical_effect(
-        right(R)
+    INFORMATION, 
+    practical_effect_according_to_FDCPA(
+        DISCLOSURE,
+        PE
     )
 ) :- 
-    makes_hypothetical_unsophisticated_consumer_think(
-        collection_letter(INFORMATION), 
-        less_than_fdcpa(
-            benefit(
-                practical_effect(
-                    right(
-                        consumer(C),
-                        dispute(consumer(C), the_debt ,debt_collector(C))    
-                    )
-                )
-            )
-        )
-    ).
-
-makes_hypothetical_unsophisticated_consumer_think(
-    statement(
-        'collection letter', 
-        INFORMATION
-    ), 
-    less_than_fdcpa(
-        benefit(
-            right(
-                consumer(C),
-                dispute(consumer(C), the_debt ,debt_collector(DC))    
-            ),
-        consumer(C),
-        BENEFIT
-        )
-    )
-) :- 
-    fdcpa_notice(_, INFORMATION),
-    disparage( 
-        INFORMATION, 
-        benefit(
-            right(
-                consumer(C),
-                dispute(consumer(C), the_debt ,debt_collector(DC))    
-            ),
-            cease_collection_of_debt(_, debt_collector(DC), consumer(C))
-        )
+    practical_effect_according_to_FDCPA(DISCLOSURE, PE),
+    disparage(
+        INFORMATION,
+        PE,
+        DISCLOSURE
     ).

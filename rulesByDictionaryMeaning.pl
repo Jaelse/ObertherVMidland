@@ -7,11 +7,15 @@
 
 % TODO: Refactor to make disclosure more practical
 % TODO: made known part of the meaning disclosure should be done.
-disclosure(INFORMATION, right(R), debt_collector(DC), consumer(C)) :-
-    sent(debt_collector(DC), INFORMATION, consumer(C)),
-    same(
+disclosure_of_rtd(collection_letter(Information), debt_collector(DC), consumer(C)) :-
+    communication(debt_collector(DC), consumer(C), collection_letter(INFORMATION), _),
+    contains(
         INFORMATION, 
-        right(R)
+        [
+            fdcpa1692ga:rule("validation notice statement 1", _, _), 
+            fdcpa1692ga:rule("validation notice statement 2", _, _),
+            fdcpa1692ga:rule("validation notice statement 3", _, _)
+        ]
     ).
 
 
@@ -99,43 +103,13 @@ not_stopped(
 % disparage
 
 disparage( 
-    INFORMATION, 
-    benefit(
-        right(
-            consumer(C),
-            dispute(consumer(C), the_debt ,debt_collector(DC))    
-        ),
-        cease_collection_of_debt(_, debt_collector(DC), consumer(C))
-    )
+    INFORMATION,
+    DISCLOSURE,
+    PE
 ) :- 
-    represents(
-        INFORMATION, 
-        benefit(
-            payment(consumer(C), debt_collector(DC)),
-            consumer(C),
-            cease_collection_of_debt(_, debt_collector(DC), consumer(C))
-        )
-    ),
-    not(
-        represents(
-            INFORMATION, 
-            benefit(
-                right(
-                    consumer(C),
-                    dispute(consumer(C), the_debt ,debt_collector(DC))    
-                ),
-                consumer(C),
-                cease_collection_of_debt(_, debt_collector(DC), consumer(C))
-            )
-        )
-    ),
-    practical_effect(
-        right(
-            consumer(C),
-            dispute(consumer(C), the_debt ,debt_collector(DC))    
-        ),
-        cease_collection_of_debt(_, debt_collector(DC), consumer(C))
-    ).
+    find_rules_with_similar_effect(INFORMATION, PE, R),
+    bodies(R, Bodies),
+    not_include(Bodies, DISCLOSURE).
 % --------------------------------------------- REPRESENTS ------------------------------------------------
 represents(
     INFORMATION, 
@@ -303,14 +277,11 @@ advantage(
 
 % --------------------------------------------- contains ------------------------------------------------
 
-contains(
-    INFORMATION, 
-    ELEMENT
-) :-
-    member(
-        ELEMENT,
-        INFORMATION
-    ).
+contains([], _).
+
+contains([H|T], L) :-
+    member(H, L),
+    contains(T, L).
         
 % --------------------------------------------- fdcpa notice ------------------------------------------------
 
