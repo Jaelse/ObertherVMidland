@@ -1,3 +1,4 @@
+:- module(fdcpa1692ga, [rule/4]).
 % IF
 % on date D initial communication was made between debt collector DC and consumer C in connection with the collection of any debt
 % AND
@@ -27,8 +28,8 @@ shall(
         add_day(D_1, 5, D_5),
         before(D_send, D_5),
         STATEMENT = [
-            rule("validation notice statement 1", H1,B1),
-            rule("validation notice statement 2", H2, B2) 
+            rule("fdcpa 1692g", "a1", H1,B1),
+            rule("fdcpa 1692g", "a2", H2, B2) 
         ].
 
 
@@ -47,7 +48,7 @@ obtain_and_mail_verification_of_debt(debt_collector(DC), consumer(C)) :-
     ),
     before(D, thirty_day_time_period).
 
-rule("validation notice statement 1", 
+rule("fdcpa 1692g", "a1",
     valid(debt(consumer(C))), 
     (
         not(dispute(consumer(C), debt(DEBT), D1)), 
@@ -55,7 +56,7 @@ rule("validation notice statement 1",
     )
     ).
 
-rule("validation notice statement 2", 
+rule("fdcpa 1692g", "a2", 
     obtain_and_mail_verification_of_debt(debt_collector(DC), consumer(C)),
     (
         notifies(

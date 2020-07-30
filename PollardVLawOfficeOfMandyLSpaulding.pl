@@ -1,3 +1,5 @@
+:- module(pollard, [overshadow/2, confuse_hypothetical_unsophisticated_consumer/2,makes_hypothetical_unsophisticated_consumer_unsure_pe/2 ]).
+
 % TODO: connect these to the FDCPA RULES and the Collection letter
 
 % The First Circuit recently held that,
@@ -34,7 +36,7 @@ confuse_hypothetical_unsophisticated_consumer(
     INFORMATION,
     DISCLOSURE
     ) :- 
-    makes_hypothetical_unsophisticated_consumer_unsure(
+    makes_hypothetical_unsophisticated_consumer_unsure_pe(
         INFORMATION,
         DISCLOSURE
     ).
@@ -43,17 +45,17 @@ confuse_hypothetical_unsophisticated_consumer(
 % The emphasis, then, is on practical effect. 
 % See Graziano v. Harrison, 950 F.2d 107, 111 (3d Cir.1991) (explaining that “statutory notice must not only explicate a debtor's rights; it must do so effectively”).    
 
-makes_hypothetical_unsophisticated_consumer_unsure(
-    INFORMATION,
-    DISCLOSURE
-) :- 
-    makes_hypothetical_unsophisticated_consumer_unsure( 
-        INFORMATION, 
-        practical_effect_according_to_FDCPA(
-            DISCLOSURE,
-            PE
-        )
-    ).
+% makes_hypothetical_unsophisticated_consumer_unsure(
+%     INFORMATION,
+%     DISCLOSURE
+% ) :- 
+%     makes_hypothetical_unsophisticated_consumer_unsure( 
+%         INFORMATION, 
+%         practical_effect_according_to_FDCPA(
+%             DISCLOSURE,
+%             PE
+%         )
+%     ).
 
 
 % to give the required notice of a right to dispute the debt
@@ -73,16 +75,12 @@ makes_hypothetical_unsophisticated_consumer_unsure(
 % THEN
 % consumer finds the benefit of right to dispute less
 
-makes_hypothetical_unsophisticated_consumer_unsure( 
+makes_hypothetical_unsophisticated_consumer_unsure_pe( 
     INFORMATION, 
-    practical_effect_according_to_FDCPA(
-        DISCLOSURE,
-        PE
-    )
+    DISCLOSURE
 ) :- 
-    practical_effect_according_to_FDCPA(DISCLOSURE, PE),
-    disparage(
+    helpers:practicalEffectAccordingToFDCPA(DISCLOSURE, [], PE),
+    helpers:disparage(
         INFORMATION,
-        PE,
-        DISCLOSURE
+        PE
     ).

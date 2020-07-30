@@ -7,15 +7,17 @@
 
 % TODO: Refactor to make disclosure more practical
 % TODO: made known part of the meaning disclosure should be done.
-disclosure_of_rtd(collection_letter(Information), debt_collector(DC), consumer(C)) :-
-    communication(debt_collector(DC), consumer(C), collection_letter(INFORMATION), _),
-    contains(
+disclosure_of_rtd(DISCLOSURE, debt_collector, consumer) :-
+    communication_medium(X, INFORMATION),
+    helpers:contains(
         INFORMATION, 
+        ("fdcpa 1692g",
         [
-            fdcpa1692ga:rule("validation notice statement 1", _, _), 
-            fdcpa1692ga:rule("validation notice statement 2", _, _),
-            fdcpa1692ga:rule("validation notice statement 3", _, _)
-        ]
+            "a1", 
+            "a2",
+            "a3"
+        ]),
+        DISCLOSURE
     ).
 
 
@@ -107,9 +109,10 @@ disparage(
     DISCLOSURE,
     PE
 ) :- 
-    find_rules_with_similar_effect(INFORMATION, PE, R),
+    find_rules_with_similar_effect(INFORMATION, PE, [], R),
     bodies(R, Bodies),
     not_include(Bodies, DISCLOSURE).
+
 % --------------------------------------------- REPRESENTS ------------------------------------------------
 represents(
     INFORMATION, 
@@ -218,30 +221,6 @@ benefit(
     advantage(EFFECT, consumer(C)),
     BENEFIT = EFFECT.
 
-% --------------------------------------------- PRACTICAL EFFECT ------------------------------------------------
-practical_effect(
-    payment(consumer(C), debt_collector(DC)),
-    EFEECT
-) :-
-    causes(
-        according(_),
-        dispute(consumer(C), the_debt, debt_collector(DC)), 
-        EFFECT
-    ). 
-
-practical_effect(
-    right(
-    consumer(C),
-    dispute(consumer(C), the_debt ,debt_collector(DC))    
-    ),
-    EFEECT
-) :- 
-    causes(
-        according("FDCPA"),
-        dispute(consumer(C), the_debt, debt_collector(DC)), 
-        EFFECT
-    ).
-
 % --------------------------------------------- causes ------------------------------------------------
 
 causes(
@@ -275,13 +254,7 @@ advantage(
     consumer(C)
 ).
 
-% --------------------------------------------- contains ------------------------------------------------
 
-contains([], _).
-
-contains([H|T], L) :-
-    member(H, L),
-    contains(T, L).
         
 % --------------------------------------------- fdcpa notice ------------------------------------------------
 

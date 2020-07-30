@@ -1,5 +1,3 @@
-:- include('./ExhibitCollectionLetter.pl').
-
 plaintiff("Oberther").
 
 defendant("Midland").
@@ -25,3 +23,4 @@ sold("Capital One").
 debt_collector("Midland").
 
 
+do(debt_collector, send_collection_letter, consumer, t_e).
